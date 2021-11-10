@@ -1,71 +1,52 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿:root {
+    --colorA: #111;
+    --colorB: #333;
+    --colorC: #ccc;
+    --colorD: #eee;
+    --radius: 1rem;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+#allContent {
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    background: var(--colorD);
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    color: var(--colorA);
+    background: repeating-linear-gradient(90deg, var(--colorB), var(--colorB) 6px, var(--colorC) 6px, var(--colorC) 12px);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+.bordered {
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border: 0.2rem solid var(--colorB);
+    border-radius: var(--radius);
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    padding: 1rem;
+    display: block;
+    text-decoration: none;
+    border-radius: var(--radius)
+}
+
+a {
+    color: var(--colorB);
+    font-weight: 800;
+}
+
+a:hover {
+    background: var(--colorC);
 }
