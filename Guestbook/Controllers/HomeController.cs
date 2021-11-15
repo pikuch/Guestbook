@@ -18,7 +18,7 @@ namespace Guestbook.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 0)
         {
             return View();
         }
