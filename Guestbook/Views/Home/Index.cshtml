@@ -4,7 +4,7 @@
 
 <div>
     <form id="PagePicker">
-        <button class="bordered" type="button">&larr; previous</button>
+        <a class="bordered" href=@Url.Action("Home", "Index", 0)>&larr; previous</a>
         <input class="bordered" type="number" min="0" max="100" id="pageNumber" name="pageNumber">
         <button class="bordered" type="button">&rarr; next</button>
     </form>
