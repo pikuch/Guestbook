@@ -41,17 +41,16 @@ nav a {
     text-decoration: none;
 }
 
-a {
-    color: var(--colorB);
-    font-weight: 800;
-}
-
 a:hover {
     background: var(--colorC);
 }
 
+a,
 button,
 input {
+    color: var(--colorB);
+    font-size: 1rem;
+    font-weight: 800;
     margin: 0;
     padding: 1rem;
     display: block;

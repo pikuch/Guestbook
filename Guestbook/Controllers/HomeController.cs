@@ -1,4 +1,6 @@
 ﻿using Guestbook.Models;
+using Guestbook.ViewModels;
+using GuestbookData.DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,15 +14,30 @@ namespace Guestbook.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IGuestbookEntryDao _guestbookEntryDao;
+        private const int postsPerPage = 5;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            _guestbookEntryDao = new GuestbookEntryDao();
         }
 
         public IActionResult Index(int page = 0)
         {
-            return View();
+            var entryList = new List<Entry>();
+            var rawEntries = _guestbookEntryDao.GetEntries(page * postsPerPage, postsPerPage);
+            foreach (var rawEntry in rawEntries)
+            {
+                var entry = new Entry
+                {
+                    Name = rawEntry.Name,
+                    Email = rawEntry.Email,
+                    Comment = rawEntry.Comment
+                };
+                entryList.Add(entry);
+            }
+            return View(entryList);
         }
 
         public IActionResult Privacy()

@@ -22,7 +22,7 @@ namespace GuestbookData.DAL
         public IEnumerable<GuestbookEntry> GetEntries(int start, int count)
         {
             using var context = new GuestbookDbContext();
-            return context.GuestbookEntries.OrderByDescending(e => e.Timestamp).Skip(start).Take(count);
+            return context.GuestbookEntries.OrderByDescending(e => e.Timestamp).Skip(start).Take(count).ToList();
         }
     }
 }
