@@ -46,8 +46,8 @@ a:hover {
 }
 
 a,
-button,
-input {
+button
+{
     color: var(--colorB);
     font-size: 1rem;
     font-weight: 800;
@@ -55,6 +55,11 @@ input {
     padding: 1rem;
     display: block;
     text-decoration: none;
+}
+
+input {
+    padding: 1rem;
+    display: block;
 }
 
 button:hover {
@@ -70,4 +75,8 @@ button:hover {
 
 #pageNumber {
     width: 3em;
+}
+
+.field-validation-error {
+    color: red;
 }

@@ -1,6 +1,7 @@
 ﻿using Guestbook.Models;
 using Guestbook.ViewModels;
 using GuestbookData.DAL;
+using GuestbookData.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -40,8 +41,17 @@ namespace Guestbook.Controllers
             return View(entryList);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(GuestbookEntry entry)
+        {
+            entry.Timestamp = DateTime.Now;
+
             return View();
         }
 
