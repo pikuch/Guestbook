@@ -6,10 +6,24 @@
 
 <div>
     <form id="PagePicker">
-        <a class="bordered" href=@Url.Action("Index", "Home", new { page = @Model.currentPage-1 })>&laquo; previous</a>
+        @if (Model.currentPage > 0)
+        {
+            <a class="bordered" href=@Url.Action("Index", "Home", new { page = @Model.currentPage-1 })>&laquo; previous</a>
+        }
+        else
+        {
+            <a class="bordered hidden" href=@Url.Action("Index", "Home", new { page = @Model.currentPage-1 })>&laquo; previous</a>
+        }
         <input class="bordered" type="number" min="0" max="@Model.pageCount" id="pageNumber" name="pageNumber">
         <button class="bordered" type="button">Go</button>
-        <a class="bordered" href=@Url.Action("Index", "Home", new { page = @Model.currentPage+1 })>next &raquo;</a>
+        @if (Model.currentPage < Model.pageCount)
+        {
+            <a class="bordered" href=@Url.Action("Index", "Home", new { page = @Model.currentPage+1 })>next &raquo;</a>
+        }
+        else
+        {
+            <a class="bordered hidden" href=@Url.Action("Index", "Home", new { page = @Model.currentPage+1 })>next &raquo;</a>
+        }
     </form>
 
     @foreach (var entry in Model.entries)
@@ -18,6 +32,6 @@
     }
 
     <div id="WritePostContainer">
-        <button class="bordered" type="button">Write a post</button>
+        <a class="bordered" href=@Url.Action("Create", "Home")>Write a post</a>
     </div>
 </div>
