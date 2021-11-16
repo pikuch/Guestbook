@@ -1,4 +1,14 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿'use strict';
 
-// Write your JavaScript code.
+function GoToPage(pageCount) {
+    let requestedPage = document.getElementById("pageNumber").value;
+    if (requestedPage < 0) {
+        alert("There are no pages with negative numbers!");
+    }
+    else if (requestedPage >= pageCount) {
+        alert("There are no pots on that page!");
+    }
+    else {
+        window.location.href = "/Home/Index/" + requestedPage;
+    }
+}

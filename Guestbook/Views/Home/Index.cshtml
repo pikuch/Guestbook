@@ -14,9 +14,9 @@
         {
             <a class="bordered hidden" href=@Url.Action("Index", "Home", new { page = @Model.currentPage-1 })>&laquo; previous</a>
         }
-        <input class="bordered" type="number" min="0" max="@Model.pageCount" id="pageNumber" name="pageNumber">
-        <button class="bordered" type="button">Go</button>
-        @if (Model.currentPage < Model.pageCount)
+        <input class="bordered" type="number" min="0" max="@Model.pageCount-1" id="pageNumber" name="pageNumber" value="@Model.currentPage">
+        <button class="bordered" type="button" onclick="GoToPage(@Model.pageCount)">Go</button>
+        @if (Model.currentPage < Model.pageCount-1)
         {
             <a class="bordered" href=@Url.Action("Index", "Home", new { page = @Model.currentPage+1 })>next &raquo;</a>
         }

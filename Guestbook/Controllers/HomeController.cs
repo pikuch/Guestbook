@@ -42,7 +42,7 @@ namespace Guestbook.Controllers
             {
                 entries = entryList,
                 currentPage = page,
-                pageCount = _guestbookEntryDao.CountEntries() / postsPerPage
+                pageCount = (int)Math.Ceiling((double)_guestbookEntryDao.CountEntries() / postsPerPage)
             };
             return View(indexViewModel);
         }
