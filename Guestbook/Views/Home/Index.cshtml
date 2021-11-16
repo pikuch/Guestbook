@@ -13,10 +13,7 @@
     </form>
     @foreach (var entry in Model)
     {
-        @entry.Name<br />
-        @entry.Email<br />
-        @entry.Comment<br />
-        <br>
+        @await Html.PartialAsync("_Post", entry);
     }
 
     <div id="WritePostContainer">

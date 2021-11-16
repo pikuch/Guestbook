@@ -50,9 +50,15 @@ namespace Guestbook.Controllers
         [HttpPost]
         public IActionResult Create(GuestbookEntry entry)
         {
-            entry.Timestamp = DateTime.Now;
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
 
-            return View();
+            entry.Timestamp = DateTime.Now;
+            _guestbookEntryDao.AddEntry(entry);
+
+            return RedirectToAction("Index", "Home", new { page = 0 });
         }
 
         public IActionResult Privacy()
