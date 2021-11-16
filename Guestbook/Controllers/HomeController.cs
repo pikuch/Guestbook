@@ -38,7 +38,13 @@ namespace Guestbook.Controllers
                 };
                 entryList.Add(entry);
             }
-            return View(entryList);
+            var indexViewModel = new IndexViewModel
+            {
+                entries = entryList,
+                currentPage = page,
+                pageCount = _guestbookEntryDao.CountEntries() / postsPerPage
+            };
+            return View(indexViewModel);
         }
 
         [HttpGet]

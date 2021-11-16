@@ -1,4 +1,4 @@
-﻿@model List<Guestbook.ViewModels.Entry>
+﻿@model Guestbook.ViewModels.IndexViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -6,12 +6,13 @@
 
 <div>
     <form id="PagePicker">
-        <a class="bordered" href=@Url.Action("Home", "Index", 0)>&laquo; previous</a>
-        <input class="bordered" type="number" min="0" max="100" id="pageNumber" name="pageNumber">
+        <a class="bordered" href=@Url.Action("Index", "Home", new { page = @Model.currentPage-1 })>&laquo; previous</a>
+        <input class="bordered" type="number" min="0" max="@Model.pageCount" id="pageNumber" name="pageNumber">
         <button class="bordered" type="button">Go</button>
-        <a class="bordered" href=@Url.Action("Home", "Index", 0)>next &raquo;</a>
+        <a class="bordered" href=@Url.Action("Index", "Home", new { page = @Model.currentPage+1 })>next &raquo;</a>
     </form>
-    @foreach (var entry in Model)
+
+    @foreach (var entry in Model.entries)
     {
         @await Html.PartialAsync("_Post", entry);
     }
