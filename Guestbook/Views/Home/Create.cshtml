@@ -1,0 +1,17 @@
+﻿@model GuestbookData.Model.GuestbookEntry
+@{
+    ViewData["Title"] = "Add a new post";
+}
+
+<h1>Write something nice:</h1>
+
+@using (Html.BeginForm())
+{
+    <p>@Html.LabelFor(x => x.Name)</p>
+    <p>@Html.EditorFor(x => x.Name)</p>
+    <p>@Html.LabelFor(x => x.Email)</p>
+    <p>@Html.EditorFor(x => x.Email)</p>
+    <p>@Html.LabelFor(x => x.Comment)</p>
+    <p>@Html.EditorFor(x => x.Comment)</p>
+    <p><button type="submit">Submit</button></p>
+}

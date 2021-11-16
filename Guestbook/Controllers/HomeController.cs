@@ -40,6 +40,11 @@ namespace Guestbook.Controllers
             return View(entryList);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
