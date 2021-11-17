@@ -62,9 +62,46 @@ namespace Guestbook.Controllers
             }
 
             entry.Timestamp = DateTime.Now;
-            _guestbookEntryDao.AddEntry(entry);
+            if (IsValidEntry(entry))
+            {
+                _guestbookEntryDao.AddEntry(entry);
+            }
 
             return RedirectToAction("Index", "Home", new { page = 0 });
+        }
+
+        private bool IsValidEntry(GuestbookEntry entry)
+        {
+            if (entry.Name == null)
+            {
+                return false;
+            }
+            else if (entry.Name.Length < 1 | entry.Name.Length > 30)
+            {
+                return false;
+            }
+            if (entry.Comment == null)
+            {
+                return false;
+            }
+            else if (entry.Comment.Length < 1 | entry.Comment.Length > 120)
+            {
+                return false;
+            }
+            if (entry.Email == null)
+            {
+                return false;
+            }
+            else if (entry.Email.Length < 3 || !entry.Email.Contains('@'))
+            {
+                return false;
+            }
+            if (entry.Timestamp > DateTime.Now)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public IActionResult Privacy()
