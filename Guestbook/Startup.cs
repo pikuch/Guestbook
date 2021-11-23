@@ -1,3 +1,4 @@
+using Guestbook.Data;
 using GuestbookData;
 using GuestbookData.DAL;
 using Microsoft.AspNetCore.Builder;
@@ -24,6 +25,8 @@ namespace Guestbook
             services.AddControllersWithViews();
             services.AddScoped<IGuestbookEntryDao, GuestbookEntryDao>();
             services.AddDbContext<GuestbookDbContext>();
+            services.AddDbContext<IdentityDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
