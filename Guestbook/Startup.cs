@@ -4,6 +4,7 @@ using GuestbookData.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,6 +28,10 @@ namespace Guestbook
             services.AddDbContext<GuestbookDbContext>();
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+            services.AddIdentity<IdentityUser, IdentityRole>(options => {
+                options.SignIn.RequireConfirmedAccount = false;
+                })
+                .AddEntityFrameworkStores<IdentityDbContext>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
