@@ -18,10 +18,10 @@ namespace Guestbook.Controllers
         private readonly IGuestbookEntryDao _guestbookEntryDao;
         private const int postsPerPage = 5;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IGuestbookEntryDao guestbookEntryDao)
         {
             _logger = logger;
-            _guestbookEntryDao = new GuestbookEntryDao();
+            _guestbookEntryDao = guestbookEntryDao;
         }
 
         public IActionResult Index(int page = 0)

@@ -6,23 +6,25 @@ namespace GuestbookData.DAL
 {
     public class GuestbookEntryDao : IGuestbookEntryDao
     {
+        private readonly GuestbookDbContext _context;
+        public GuestbookEntryDao(GuestbookDbContext context)
+        {
+            _context = context;
+        }
         public void AddEntry(GuestbookEntry guestbookEntry)
         {
-            using var context = new GuestbookDbContext();
-            context.GuestbookEntries.Add(guestbookEntry);
-            context.SaveChanges();
+            _context.GuestbookEntries.Add(guestbookEntry);
+            _context.SaveChanges();
         }
 
         public int CountEntries()
         {
-            using var context = new GuestbookDbContext();
-            return context.GuestbookEntries.Count();
+            return _context.GuestbookEntries.Count();
         }
 
         public IEnumerable<GuestbookEntry> GetEntries(int start, int count)
         {
-            using var context = new GuestbookDbContext();
-            return context.GuestbookEntries.OrderByDescending(e => e.Timestamp).Skip(start).Take(count).ToList();
+            return _context.GuestbookEntries.OrderByDescending(e => e.Timestamp).Skip(start).Take(count).ToList();
         }
     }
 }
