@@ -41,7 +41,12 @@ namespace Guestbook
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>(options => {
                 options.SignIn.RequireConfirmedAccount = false;
-                })
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 8;
+            })
                 .AddEntityFrameworkStores<IdentityDbContext>();
         }
 
