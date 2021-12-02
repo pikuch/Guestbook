@@ -124,3 +124,7 @@ form p {
 .hidden {
     visibility: hidden;
 }
+
+#firstMenuElement {
+    margin-right: auto;
+}

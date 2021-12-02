@@ -11,8 +11,9 @@
     <div id="allContent" class="bordered">
         <header class="bordered">
             <nav>
-                <a class="bordered" asp-controller="Home" asp-action="Index">Home</a>
+                <a id="firstMenuElement" class="bordered" asp-controller="Home" asp-action="Index">Home</a>
                 <a class="bordered" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                <partial name="_LoginPartial" />
             </nav>
         </header>
 

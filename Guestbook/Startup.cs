@@ -28,9 +28,9 @@ namespace Guestbook
             {
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
-                options.LoginPath = "/Identity/Account/Login";
-                options.LogoutPath = "/Identity/Account/Logout";
-                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
 
@@ -46,7 +46,7 @@ namespace Guestbook
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 8;
-            })
+                })
                 .AddEntityFrameworkStores<IdentityDbContext>();
         }
 
